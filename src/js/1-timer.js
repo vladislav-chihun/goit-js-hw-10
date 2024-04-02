@@ -6,6 +6,7 @@ import "izitoast/dist/css/iziToast.min.css";
 
 let countdownDate;
 const btn = document.querySelector("[data-start]");
+const input = document.querySelector("#datetime-picker")
 btn.setAttribute('disabled', "");
 
 flatpickr("#datetime-picker", {
@@ -36,6 +37,8 @@ btn.addEventListener("click", btnStartFoo);
 
 function btnStartFoo() {
   btn.setAttribute('disabled', "");
+  input.setAttribute('disabled', "");
+  
   setInterval(() => {
     const now = new Date();
     convertMs(countdownDate.getTime() - now.getTime());
