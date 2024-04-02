@@ -1,5 +1,8 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+
 
 let countdownDate;
 const btn = document.querySelector("[data-start]");
@@ -17,7 +20,14 @@ flatpickr("#datetime-picker", {
       btn.removeAttribute('disabled');
       countdownDate = selectedDate;
     } else {
-      window.alert("Please choose a date in the future");
+      iziToast.show({
+        position: "topRight",
+        messageColor: 'White',
+        message: "❌ Please choose a date in the future",
+        backgroundColor: "#CC0000",
+        transitionIn: "fadeIn",
+        animateInside: false,
+      })
     }
   }
 });

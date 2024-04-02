@@ -36,7 +36,7 @@ function createPromise(e) {
                 position: "topRight",
                 messageColor: "white",
                 message: `❌ Rejected promise in ${delay}ms`,
-                backgroundColor: "red",
+                backgroundColor: "#CC0000",
                 transitionIn: "fadeIn",
                 animateInside: false,
             })
