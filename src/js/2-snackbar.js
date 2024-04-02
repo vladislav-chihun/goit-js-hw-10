@@ -25,14 +25,20 @@ function createPromise(e) {
         .then(() =>
             iziToast.show({
                 position: "topRight",
+                messageColor: 'White',
                 message: `✅ Fulfilled promise in ${delay}ms`,
-                backgroundColor: "green"
+                backgroundColor: "green",
+                transitionIn: "fadeIn",
+                animateInside: false,
             })
         ).catch(() =>
             iziToast.show({
                 position: "topRight",
+                messageColor: "white",
                 message: `❌ Rejected promise in ${delay}ms`,
-                backgroundColor: "red"
+                backgroundColor: "red",
+                transitionIn: "fadeIn",
+                animateInside: false,
             })
         );
 }
