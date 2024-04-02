@@ -30,14 +30,14 @@ function btnStartFoo() {
     const now = new Date();
     convertMs(countdownDate.getTime() - now.getTime());
   }, 1000);
-  convertMs(countdownDate.getTime() - new Date().getTime()); // обновляем таймер сразу после нажатия кнопки
+  convertMs(countdownDate.getTime() - new Date().getTime()); 
 }
 
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
 
-// не объявляем переменные заново, а просто обновляем их значения
+
 function convertMs(ms) {
   if (ms < 0) {
     clearInterval();
