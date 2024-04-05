@@ -3,11 +3,12 @@ import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-
 let countdownDate;
 const btn = document.querySelector("[data-start]");
 const input = document.querySelector("#datetime-picker")
 btn.setAttribute('disabled', "");
+
+let intervalId;
 
 flatpickr("#datetime-picker", {
   enableTime: true,
@@ -39,21 +40,15 @@ function btnStartFoo() {
   btn.setAttribute('disabled', "");
   input.setAttribute('disabled', "");
   
-  setInterval(() => {
+  intervalId = setInterval(() => {
     const now = new Date();
     convertMs(countdownDate.getTime() - now.getTime());
   }, 1000);
-  convertMs(countdownDate.getTime() - new Date().getTime()); 
 }
-
-function addLeadingZero(value) {
-  return String(value).padStart(2, '0');
-}
-
 
 function convertMs(ms) {
-  if (ms < 0) {
-    clearInterval();
+  if (ms <= 0) {
+    clearInterval(intervalId);
     return;
   }
   const second = 1000;
@@ -74,4 +69,8 @@ function convertMs(ms) {
   timerHours.textContent = hours;
   timerMinutes.textContent = minutes;
   timerSeconds.textContent = seconds;
+}
+
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
 }

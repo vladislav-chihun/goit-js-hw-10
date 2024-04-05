@@ -11,31 +11,32 @@ form.addEventListener("submit", createPromise);
 
 function createPromise(e) {
     e.preventDefault(); 
-    const delay = formInput.value;
+    const delay = Number(formInput.value);
+    const state = form.elements.state.value; 
 
     const promise = new Promise((resolve, reject) => {
-        if (fulfilledRadioButton.checked) {
-            setTimeout(() => resolve(), delay);
+        if (state === 'fulfilled') {
+            setTimeout(() => resolve(delay), delay);
         } else {
-            setTimeout(() => reject(), delay);
+            setTimeout(() => reject(delay), delay);
         }
     });
 
     promise
-        .then(() =>
+        .then(delay => 
             iziToast.show({
                 position: "topRight",
                 messageColor: 'White',
-                message: `✅ Fulfilled promise in ${delay}ms`,
+                message: `✅ Promise виконано за ${delay} мс`, 
                 backgroundColor: "green",
                 transitionIn: "fadeIn",
                 animateInside: false,
             })
-        ).catch(() =>
+        ).catch(delay => 
             iziToast.show({
                 position: "topRight",
                 messageColor: "white",
-                message: `❌ Rejected promise in ${delay}ms`,
+                message: `❌ Promise відхилено за ${delay} мс`, 
                 backgroundColor: "#CC0000",
                 transitionIn: "fadeIn",
                 animateInside: false,
