@@ -22,7 +22,7 @@ flatpickr("#datetime-picker", {
       btn.removeAttribute('disabled');
       countdownDate = selectedDate;
     } else {
-      iziToast.show({
+      iziToast.error({
         position: "topRight",
         messageColor: 'White',
         message: "❌ Please choose a date in the future",
